@@ -240,7 +240,7 @@ df_new.head()
 ##Output
 ---
 ```
- 	Subject 	Clean_Keyword
+ 	                   Subject 	                                  Clean_Keyword
 0 	Message d'erreur : "Le fournisseur ARIBA n'exi... 	message,erreur,fournisseur,aria,exister
 1 	Message d'erreur : "Commande d’article non aut... 	message,erreur,commander,article,autoriser,oto
 2 	Message d'erreur : "Statut utilisateur FERM ac... 	message,erreur,statut,utilisateur,actif,oto
@@ -412,7 +412,7 @@ cosine_similarity_T(10,sentence,df_new )
 
 -------------------------------------
 
-	index 	Subject 	Score
+       index 	                 Subject 	                         Score
 0 	19 	Message d'erreur "Le fournisseur MDM___ n’exis... 	0.781490
 1 	0 	Message d'erreur : "Le fournisseur ARIBA n'exi... 	0.600296
 2 	20 	Message d'erreur "Le fournisseur MDM___ est bl... 	0.587467
