@@ -8,15 +8,32 @@
 *   Pandas
 *   Scikit-learn
 
+##Prerequistes
 ```
-import re
-from collections import Counter
-import unicodedata, re, string
-import json
-from sklearn.feature_extraction.text import TfidfVectorizer
+import re, json
+import unicodedata, string
+import time
 import operator
 import numpy as np 
-import time
+import pandas as pd
+from collections import Counter
+```
+```
+from collections import defaultdict
+import nltk 
+from nltk.tokenize import word_tokenize
+from nltk import pos_tag
+from nltk.corpus import stopwords
+from nltk.stem import WordNetLemmatizer
+from nltk.tokenize import word_tokenize
+from nltk.corpus import wordnet as wn
+from sklearn.feature_extraction.text import TfidfVectorizer
+```
+```
+nltk.download('punkt')
+nltk.download('wordnet')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('stopwords')
 ```
 
 ##data
@@ -132,7 +149,7 @@ def DICO_ET_CORRECTEUR():
 WORDS,CORRECTION = DICO_ET_CORRECTEUR()
 ```
 --- 
-##stopwords et stemming
+##stopwords et stemming(premier exemple)
 --- 
 
 ```
@@ -270,10 +287,54 @@ df_new.head()
 
 
 
+---
+##tokenize and stemming(second exemple)
+---
+
+```
+# WordNetLemmatizer requires Pos tags to understand if the word is noun or verb or adjective etc. By default it is set to Noun
+def wordLemmatizer(data,colname):
+    tag_map = defaultdict(lambda : wn.NOUN)
+    tag_map['J'] = wn.ADJ
+    tag_map['V'] = wn.VERB
+    tag_map['R'] = wn.ADV
+    file_clean_k =pd.DataFrame()
+    for index,entry in enumerate(data):
+        
+        # Declaring Empty List to store the words that follow the rules for this step
+        Final_words = []
+        # Initializing WordNetLemmatizer()
+        word_Lemmatized = WordNetLemmatizer()
+        # pos_tag function below will provide the 'tag' i.e if the word is Noun(N) or Verb(V) or something else.
+        for word, tag in pos_tag(entry):
+            # Below condition is to check for Stop words and consider only alphabets
+            if len(word)>1 and word not in stopwords.words('french') and word.isalpha():
+                word_Final = word_Lemmatized.lemmatize(word,tag_map[tag[0]])
+                Final_words.append(word_Final)
+            # The final processed set of words for each iteration will be stored in 'text_final'
+                file_clean_k.loc[index,colname] = str(Final_words)
+                file_clean_k.loc[index,colname] = str(Final_words)
+                file_clean_k=file_clean_k.replace(to_replace ="\[.", value = '', regex = True)
+                file_clean_k=file_clean_k.replace(to_replace ="'", value = '', regex = True)
+                file_clean_k=file_clean_k.replace(to_replace =" ", value = '', regex = True)
+                file_clean_k=file_clean_k.replace(to_replace ='\]', value = '', regex = True)
+
+    return file_clean_k
 
 
+def wordLemmatizer_(sentence):
+    #prendre une phrase que retourner un str (les mots sont separes par des ,)
+    preprocessed_query = preprocessed_query = re.sub("\W+", " ", sentence).strip()
+    tokens = word_tokenize(str(preprocessed_query))
+    q_df = pd.DataFrame(columns=['q_clean'])
+    idx = 0
+    colname = 'keyword_final'
+    q_df.loc[idx,'q_clean'] =tokens
+    print('\n\n---inputtoken');print(q_df.q_clean)
+    print('\n\n---outputlemma');print(wordLemmatizer(q_df.q_clean,colname).loc[idx,colname])
+    return wordLemmatizer(q_df.q_clean,colname).loc[idx,colname]
 
-
+```
 
 
 
