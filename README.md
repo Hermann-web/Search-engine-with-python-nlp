@@ -37,18 +37,7 @@ def get_dico():
     try:DICO = open(textdir,'r',encoding="utf-8").read()
     except: DICO = open(textdir,'r').read()
     
-    textdir = 'corpus_.txt'
-    try:CORPUS = open(textdir,'r',encoding="utf-8").read();found=True
-    except:pass
-    try: CORPUS = open(textdir,'r').read();found=True 
-    except: pass
-    CORPUS = open(textdir,'r',encoding='cp1252').read();found=True 
-
-    
-    
-    #WORDS = Counter(words( 'manger bouger difference update All edits that are one edit away from `word`. The subset of `words` that appear in the dictionary of WORDS '))
-    
-    return DICO+CORPUS
+    return DICO
 
 
 def remove_accents(input_str):
