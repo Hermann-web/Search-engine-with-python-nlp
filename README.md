@@ -209,16 +209,17 @@ SENTENCE_TO_CORRECT_WORDS('La PR reste au statut «\xa0Approuve(e)\xa0» et il n
 ['reste', 'statut', 'approuve', 'n’y', 'pas', 'commande']
 
 ------------correction--------
-['reste', 'statut', 'approuve', 'n’y', 'pas', 'commande']
+['reste', 'statut', 'approuve', 'non', 'pas', 'commande']
 
 ------------stemming--------
-['rester', 'statut', 'approuver', 'n’y', 'pas', 'commander']
+['rester', 'statut', 'approuver', 'non', 'pas', 'commander']
 
 ------------remove stop-words--------
-['rester', 'statut', 'approuver', 'n’y', 'commander']
+['rester', 'statut', 'approuver', 'commander']
 
 -------------------------------------
-['rester', 'statut', 'approuver', 'n’y', 'commander']
+['rester', 'statut', 'approuver', 'commander']
+
 ```
 
 
