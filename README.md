@@ -4,24 +4,33 @@
 ##Prerequistes
 *   Python >=3.7
 *   NLTK
-*   Scikit-learn
 *   Pandas
-
-##data
-Files used in the notebook aare stored in the folder data
-
-# **1: Créer les keywords à partir d'une phrase en se basant sur les mots d'un dictionnaire et un corpus de texte en passant par la tokenization, la correction, la lemmatization et le removeStopWords**
----
-##fonction: SENTENCE_TO_CORRECT_WORDS
---- 
+*   Scikit-learn
 
 ```
 import re
 from collections import Counter
 import unicodedata, re, string
-import json 
+import json
+from sklearn.feature_extraction.text import TfidfVectorizer
+import operator
+import numpy as np 
+import time
+```
+
+##data
+Files used in the notebook are stored in the folder data
 
 
+# **1: Créer les keywords à partir d'une phrase en se basant sur les mots d'un dictionnaire et un corpus de texte en passant par la tokenization, la correction, la lemmatization et le removeStopWords**
+
+
+
+
+--- 
+##preprocessing
+--- 
+```
 def get_dico():
     textdir = "liste.de.mots.francais.frgut_.txt"
     try:DICO = open(textdir,'r',encoding="utf-8").read()
@@ -68,22 +77,7 @@ def clean_sentence(texte):
     
     return texte
 
-'''
-#pas cool car il ya des nombres importants
-def tokenize_sentence3(texte):
-    #retourner les groupes d'alphabets
-    return re.findall(r'\w+', texte.lower())
-'''
-'''
-#inutile ici car sa VA est qu'ik decoupe en phrases
-def tokenize_sentence2(texte):
-        #clean the sentence
-    blob_object = TextBlob(texte)
-        #tokenize
-    liste_words = blob_object.words
-        #return 
-    return liste_words
-'''
+
 def tokenize_sentence(texte):
         #clean the sentence 
     texte = clean_sentence(texte)
@@ -108,7 +102,12 @@ def pre_process(sentence):
     liste_words = strip_apostrophe(liste_words)
     print('\nsentence to words : ',liste_words)
     return liste_words
+```
+--- 
+##correction des mots
+--- 
 
+```
 def edits1(word):
     "All edits that are one edit away from `word`."
     letters    = 'abcdefghijklmnopqrstuvwxyz'
@@ -146,7 +145,12 @@ def DICO_ET_CORRECTEUR():
     return WORDS,correction
 
 WORDS,CORRECTION = DICO_ET_CORRECTEUR()
+```
+--- 
+##stopwords et stemming
+--- 
 
+```
 
 ##stopwords #//https://www.ranks.nl/stopwords/french
 with open('stp_words_.txt','r') as f:
@@ -157,7 +161,12 @@ with open("sample_.json",'r',encoding='cp1252') as json_file:
     #json_file.seek(0)
     LISTE = json.load(json_file)
 my_stemmer = lambda word: LISTE[word] if word in LISTE else word
+```
 
+---
+##fonction: SENTENCE_TO_CORRECT_WORDS
+--- 
+```
 def SENTENCE_TO_CORRECT_WORDS(sentence):
     "cette fonction retourne la liste des mots du user"
     print('\n------------pre_process--------\n')
@@ -218,7 +227,7 @@ SENTENCE_TO_CORRECT_WORDS('La PR reste au statut «\xa0Approuve(e)\xa0» et il n
 
 
 ---
-#**Create dataset**
+##**Create dataset**
 ---
 
 ```
@@ -282,12 +291,6 @@ df_new.head()
 
 
 ```
-from sklearn.feature_extraction.text import TfidfVectorizer
-import operator
-import numpy as np 
-import time
-
-
 def init(df_news):
   ## Create Vocabulary
   vocabulary = set()
@@ -299,6 +302,13 @@ def init(df_news):
   tfidf_tran=tfidf.transform(df_news.Clean_Keyword)
   globals()['vocabulary'],globals()['tfidf'],globals()['tfidf_tran'] = vocabulary,tfidf,tfidf_tran
 
+
+```
+---
+##Create a vector for Query/search keywords
+---
+
+```
 def gen_vector_T(tokens,df_news,vocabulary,tfidf,tfidf_tran):
   Q = np.zeros((len(vocabulary)))    
   x= tfidf.transform(tokens)
@@ -314,12 +324,19 @@ def gen_vector_T(tokens,df_news,vocabulary,tfidf,tfidf_tran):
           print(token,':','not found')
           pass
   return Q
+```
+---
+##Cosine Similarity function
+---
+
+```
 def cosine_sim(a, b):
     if not np.linalg.norm(a) and not np.linalg.norm(b): return -3
     if not np.linalg.norm(a):return -1
     if not np.linalg.norm(b):return -2
     cos_sim = np.dot(a, b)/(np.linalg.norm(a)*np.linalg.norm(b))
     return cos_sim   
+
 def cosine_similarity_T(k, query,df_news,vocabulary=None,tfidf=None,tfidf_tran=None,mine=True):
     try:
       vocabulary = globals()['vocabulary']
@@ -351,16 +368,6 @@ def cosine_similarity_T(k, query,df_news,vocabulary=None,tfidf=None,tfidf_tran=N
     for j,simScore in enumerate(d_cosines[-k:][::-1]):
         a.loc[j,'Score'] = simScore
     return a
-
-
-def test(data,sentence,init_=False,mine=True):
-  if not init_:
-    deb = time.time();print('\n\n###########')
-    init(df_news)
-    print('\n###########temps init: ', time.time()-deb)
-  deb = time.time();print('\n\n###########')
-  print(cosine_similarity_T(10, sentence,df_news))
-  print('\n###########temps methode 1: ', time.time()-deb)
 ```
 
 
@@ -370,6 +377,14 @@ def test(data,sentence,init_=False,mine=True):
 ---
 
 ```
+def test(data,sentence,init_=False,mine=True):
+  if not init_:
+    deb = time.time();print('\n\n###########')
+    init(df_news)
+    print('\n###########temps init: ', time.time()-deb)
+  deb = time.time();print('\n\n###########')
+  print(cosine_similarity_T(10, sentence,df_news))
+  print('\n###########temps methode 1: ', time.time()-deb)
 sentence = 'Message d\'erreur \"La qte livree est differente de la qte facturee ; fonction impossible"'
 sentence = 'erreur de conversion'
 sentence = 'message d\'erreur'
@@ -384,7 +399,7 @@ cosine_similarity_T(10,sentence,df_new )
 
 
 ---
-###Output
+##Output
 ---
 
 
