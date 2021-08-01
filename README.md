@@ -257,18 +257,18 @@ df_new.head()
 ---
 ```
  	Subject 	Clean_Keyword
-0 	Message d'erreur : "Le fournisseur ARIBA n'exi... 	message,erreur,fournisseur,ariba,exister
-1 	Message d'erreur : "Commande d’article non aut... 	message,erreur,commander,d’article,autoriser,otp
-2 	Message d'erreur : "Statut utilisateur FERM ac... 	message,erreur,statut,utilisateur,ferm,actif,otp
-3 	Message d'erreur : "Statut systeme TCLO actif ... 	message,erreur,statut,systeme,tclo,actif,ord
-4 	Message d'erreur "___ Cost center change could... 	message,erreur,cost,center,changer,could,not,e...
-5 	Messaeg d'erreur "___ OTP change could not be ... 	messaeg,erreur,otp,changer,could,not,effected
-6 	Messaeg d'erreur "Entrez Centre de couts" 	        messaeg,erreur,entrer,centrer,cout
-7 	Message d'erreur "Indiquez une seule imputatio... 	message,erreur,indiquer,seul,imputation,statis...
+0 	Message d'erreur : "Le fournisseur ARIBA n'exi... 	message,erreur,fournisseur,aria,exister
+1 	Message d'erreur : "Commande d’article non aut... 	message,erreur,commander,article,autoriser,oto
+2 	Message d'erreur : "Statut utilisateur FERM ac... 	message,erreur,statut,utilisateur,actif,oto
+3 	Message d'erreur : "Statut systeme TCLO actif ... 	message,erreur,statut,systeme,col,actif,nord
+4 	Message d'erreur "___ Cost center change could... 	message,erreur,coat,centrer,changer,cold,affecter
+5 	Messaeg d'erreur "___ OTP change could not be ... 	message,erreur,oto,changer,cold,affecter
+6 	Messaeg d'erreur "Entrez Centre de couts" 	message,erreur,entrer,centrer,cout
+7 	Message d'erreur "Indiquez une seule imputatio... 	message,erreur,indiquer,imputation,statistique
 8 	Message d'erreur "Imputations CO ont des centr... 	message,erreur,imputation,centrer,profit
 9 	Message d'erreur "Poste ___ Ordre ___ depassem... 	message,erreur,poster,ordre,depassement,budget
 10 	Message d'erreur "Entrez une quantite de comma... 	message,erreur,entrer,quantite,commander
-11 	Message d'erreur "Indiquez la quantite" 	        message,erreur,indiquer,quantite
+11 	Message d'erreur "Indiquez la quantite" 	message,erreur,indiquer,quantite
 12 	Message d'erreur "Le prix net doit etre superi... 	message,erreur,prix,net,superieur
 ... 	... 	...
 ... 	... 	...
