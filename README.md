@@ -428,6 +428,7 @@ cosine_similarity_T(10,sentence,df_new )
 7 	30 	Message d'erreur "Renseigner correctement le d... 	0.000000
 8 	29 	Message d'erreur "Article ___ non gere dans la... 	0.000000
 9 	28 	Message d'erreur "Fonctions oblig. Suivantes n... 	0.000000
+... 	... 	...
 ```
 
 
