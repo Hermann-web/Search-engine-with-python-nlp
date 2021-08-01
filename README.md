@@ -262,16 +262,25 @@ df_new.head()
 3 	Message d'erreur : "Statut systeme TCLO actif ... 	message,erreur,statut,systeme,tclo,actif,ord
 4 	Message d'erreur "___ Cost center change could... 	message,erreur,cost,center,changer,could,not,e...
 5 	Messaeg d'erreur "___ OTP change could not be ... 	messaeg,erreur,otp,changer,could,not,effected
-6 	Messaeg d'erreur "Entrez Centre de couts" 	messaeg,erreur,entrer,centrer,cout
+6 	Messaeg d'erreur "Entrez Centre de couts" 	        messaeg,erreur,entrer,centrer,cout
 7 	Message d'erreur "Indiquez une seule imputatio... 	message,erreur,indiquer,seul,imputation,statis...
 8 	Message d'erreur "Imputations CO ont des centr... 	message,erreur,imputation,centrer,profit
 9 	Message d'erreur "Poste ___ Ordre ___ depassem... 	message,erreur,poster,ordre,depassement,budget
 10 	Message d'erreur "Entrez une quantite de comma... 	message,erreur,entrer,quantite,commander
-11 	Message d'erreur "Indiquez la quantite" 	message,erreur,indiquer,quantite
+11 	Message d'erreur "Indiquez la quantite" 	        message,erreur,indiquer,quantite
 12 	Message d'erreur "Le prix net doit etre superi... 	message,erreur,prix,net,superieur
-...
-...
-...
+... 	... 	...
+... 	... 	...
+... 	... 	...
+57 	UO4-5 Commande | Envoi d'une commande manuelle 	uo4,commander,envoi,commander,manuel
+58 	UO5-4 Reception | Anomalie workflow 	uo5,reception,anomalie,workflow
+59 	UO5-1 Reception | Modification(s) de reception(s) 	uo5,reception,modification,reception
+60 	UO5-2 Reception | Annulation(s) de reception(s) 	uo5,reception,annulation,reception
+61 	UO5-3 Reception | Forcer la reception 	uo5,reception,forcer,reception
+62 	UO3-5 Demande d'achat | Demande de support cre... 	uo3,demander,achat,demander,support,creation
+63 	UO3-6 Demande d'achat | Demande de support mod... 	uo3,demander,achat,demander,support,modification
+64 	UO3-7 Demande d'achat | Demande de support ann... 	uo3,demander,achat,demander,support,annulation
+65 	UO4-2 Commande | Demande de support modificati... 	uo4,commander,demander,support,modification,co...
 ```
 
 
