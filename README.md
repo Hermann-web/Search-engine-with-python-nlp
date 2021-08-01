@@ -41,11 +41,6 @@ def get_dico():
 
 
 def remove_accents(input_str):
-    '''
-    nfkd_form = unicodedata.normalize('NFKD', input_str)
-    only_ascii = nfkd_form.encode('ASCII', 'ignore')
-    return only_ascii
-    '''
     """This method removes all diacritic marks from the given string"""
     norm_txt = unicodedata.normalize('NFD', input_str)
     shaved = ''.join(c for c in norm_txt if not unicodedata.combining(c))
