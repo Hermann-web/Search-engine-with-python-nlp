@@ -398,9 +398,9 @@ def test(data,sentence,init_=False,mine=True):
 sentence = 'Message d\'erreur \"La qte livree est differente de la qte facturee ; fonction impossible"'
 sentence = 'erreur de conversion'
 sentence = 'message d\'erreur'
-sentence = "le fournisseur MDM n'existe pas"
 sentence = "groupe d'acheteurs non défini"
 sentence = "UO4"
+sentence = "le fournisseur MDM n'existe pas"
 init(df_new) 
 
 cosine_similarity_T(10,sentence,df_new )
