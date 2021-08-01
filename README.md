@@ -251,7 +251,7 @@ df_new.head()
 2 	Message d'erreur : "Statut utilisateur FERM ac... 	message,erreur,statut,utilisateur,actif,oto
 3 	Message d'erreur : "Statut systeme TCLO actif ... 	message,erreur,statut,systeme,col,actif,nord
 4 	Message d'erreur "___ Cost center change could... 	message,erreur,coat,centrer,changer,cold,affecter
-5 	Messaeg d'erreur "___ OTP change could not be ... 	message,erreur,oto,changer,cold,affecter
+5 	Messaeg d'erreur "___ OTP change could not be ... 	message,erreur,otp,changer,cold,affecter
 6 	Messaeg d'erreur "Entrez Centre de couts" 	message,erreur,entrer,centrer,cout
 7 	Message d'erreur "Indiquez une seule imputatio... 	message,erreur,indiquer,imputation,statistique
 8 	Message d'erreur "Imputations CO ont des centr... 	message,erreur,imputation,centrer,profit
