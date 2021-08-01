@@ -177,7 +177,7 @@ def SENTENCE_TO_CORRECT_WORDS(sentence):
 ```
 
 
-\
+
 
 ---
 ##Test: SENTENCE_TO_CORRECT_WORDS
@@ -187,7 +187,7 @@ def SENTENCE_TO_CORRECT_WORDS(sentence):
 SENTENCE_TO_CORRECT_WORDS('La PR reste au statut «\xa0Approuve(e)\xa0» et il n’y a pas de commande\"\'')
 ```
 
-\
+
 
 ---
 ##Output
@@ -211,9 +211,9 @@ SENTENCE_TO_CORRECT_WORDS('La PR reste au statut «\xa0Approuve(e)\xa0» et il n
 ```
 
 
-\
 
-\
+
+
 
 
 
@@ -265,13 +265,13 @@ df_new.head()
 ...
 ```
 
-\
 
-\
 
-\
 
-\
+
+
+
+
 
 
 
@@ -363,7 +363,7 @@ def test(data,sentence,init_=False,mine=True):
   print('\n###########temps methode 1: ', time.time()-deb)
 ```
 
-\
+
 
 ---
 ##Test: cosine_similarity_T
@@ -381,7 +381,7 @@ init(df_new)
 cosine_similarity_T(10,sentence,df_new )
 ```
 
-\
+
 
 ---
 ###Output
