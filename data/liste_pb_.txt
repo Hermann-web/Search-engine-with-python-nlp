@@ -1,0 +1,67 @@
+Message d'erreur : "Le fournisseur ARIBA n'existe pas"
+Message d'erreur : "Commande d’article non autorise (OTP __)"
+Message d'erreur : "Statut utilisateur FERM actif (OTP ___)"
+Message d'erreur : "Statut systeme TCLO actif (ORD ___)"
+Message d'erreur "___ Cost center change could not be effected"
+Messaeg d'erreur "___ OTP change could not be effected"
+Messaeg d'erreur "Entrez Centre de couts"
+Message d'erreur "Indiquez une seule imputation non statistique"
+Message d'erreur "Imputations CO ont des centres de profit differents"
+Message d'erreur "Poste ___ Ordre ___ depassement de budget"
+Message d'erreur "Entrez une quantite de commande"
+Message d'erreur "Indiquez la quantite"
+Message d'erreur "Le prix net doit etre superieur a 0"
+Message d'erreur "Les conditions de paiement ___ ne sont pas creees"
+Message d'erreur "Le centre de profit __ n'existe pas ds le perimetre de comptabilis. __
+
+"
+Message d'erreur "Utilisateur ___ traite deja Cde achat ___"
+Message d'erreur "validation ___ : le compte ___ est interdit sur le centre ___"
+Message d'erreur "Validation ___ : le compte ___ doit etre impute sur le centre de cout"
+Message d'erreur "Le fournisseur MDM___ n’existe pas"
+Message d'erreur "Le fournisseur MDM___ est bloque pour l’organisation achats ___"
+Message d'erreur "Date de livraison situee dans le passe"
+Message d'erreur "La qte livree est differente de la qte facturee ; fonction impossible"
+Message d'erreur "Groupe d’acheteurs NOT non defini (Verifiez vos donnees)"
+Message d'erreur "Le founisseur XXXX-40 n’existe pas"
+Message d'erreur "Le cpte general ___ ne peut etre utilise (corrigez)"
+Message d'erreur "Erreur de conversion des quantites lors du calcul du prix net"
+Message d'erreur "Qte (+ tolerance livr.excedentaire) inferieur a quantite livree de ___"
+Message d'erreur "Fonctions oblig. Suivantes non def ds gestion des partenaires : CD"
+Message d'erreur "Article ___ non gere dans la division ___"
+Message d'erreur "Renseigner correctement le demandeur"
+Message d'erreur " L’unite de quantite par /PC n’est pas definie dans la langue ES "
+La quantite est superieure a la quantite disponible de ___"
+Message d'erreur "Il existe des factures pour le cas ___ . Creation du mouvement impossible."
+Message d'erreur " AC Qte entre. facture pas atteint, difference de ___"
+Message d'erreur " AC Qte entree march. pas atteint, difference de ___"
+Message d'erreur " AC Qte commandee depasse(e) de ___"
+Message d'erreur " Ecriture impossible (immob. ___ mise hors service)"
+Message d'erreur " La quantite totale EM ___ est differente de celle controlee en douan "
+Message d'erreur " Date comptable interdite pour saisie de receptions "
+Message d'erreur " Enregistrer uniq. ds les periodes ___ et ___ si possible ds dom. Val. ___ "
+Message d'erreur " Periode ___ n’est pas ouverte pour type dpte ___ "
+Message d'erreur " Le document ne contient aucun poste "
+Message d'erreur "Aucune entree en stock possible pour la commande ___"
+Message d'erreur "Entree marchandises – commande non autorise (OTP ___)"
+Message d'erreur "Le centre ___ est bloque aux ecritures de couts primaires le ___"
+Message d'erreur "Statut utilisateur ZBHA actif (OTP ___)"
+Message d'erreur "Statut systeme BLOQ actif (OTP ___)"
+Message d'erreur "Statut utilisateur FERM actif (OTP ___)"
+Message d'erreur "Ecritures d’immobilisations pour ste ___"
+Message d'erreur "Les donnees de division de l'article ___  sont bloquees par l'utilisateur ___"
+Message d'erreur "Utilisateur YRARIBATCH traite deja Poste document achat ___"
+Message d'erreur "Tableau 01: La valeur d'acquisition devient negative"
+Message d'erreur "Fournisseur non present dans ARIBA mais present dans SAP"
+Message d'erreur "Vendeur a ete supprime(e) (modification de PR)"
+Message d'erreur "La PR reste au statut « Approuve(e) » et il n’y a pas de commande"
+ppp
+UO4-5 Commande | Envoi d'une commande manuelle
+UO5-4 Reception | Anomalie workflow
+UO5-1 Reception | Modification(s) de reception(s)
+UO5-2 Reception | Annulation(s) de reception(s)
+UO5-3 Reception | Forcer la reception
+UO3-5 Demande d'achat | Demande de support creation DA
+UO3-6 Demande d'achat | Demande de support modification DA
+UO3-7 Demande d'achat | Demande de support annulation DA
+UO4-2 Commande | Demande de support modification commande
