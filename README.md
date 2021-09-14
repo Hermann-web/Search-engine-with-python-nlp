@@ -342,6 +342,151 @@ def wordLemmatizer_(sentence):
 
 # **2: trouver la meilleure phrase dans une liste de phrase**
 ---
+##method: TF-Idf
+---
+TfIdf stands for: Term Frequency Inverse Document Frequency
+In order to compare the user input to existing sentence in database, we will go throught two process
+- Normalize database: Apply the pre-processing method to all sentences in the database. We then have, for each sentence, a list of keywords
+- For each keyword kw for each sentence st, we compute, 
+   - $frqc(word,sentence)$ : occurrence of the keyword word in the sentence
+    - $doc\_frqc(word)$: number of sentences where the word appears
+    - $N$ = Number of sentences
+
+```
+{r, message=FALSE}
+$$
+tf(wd,stc) =  \frac {frqc(wd,stc)}{ \sum_{stc} frqc(wd,stc) }\\
+idf(wd) =  \log(\frac{N}{doc\_frqc(wd)})\\
+tfidf(wd,stc) = tf(wd,stc) *idf(wd)
+$$
+```
+```
+                     frqc(wd,stc)      
+tf(wd,stc)  =   ---------------------- 
+                  __                   
+                 \       frqc(wd,stc)  
+                 /__ stc               
+                                 
+                           N           
+    idf(wd)  =   log(------------)     
+                     doc_frqc(wd)      
+                                       
+tfidf(wd,stc)  =  tf(wd,stc)  * idf(wd)
+```
+
+
+Example
+st1: The computer is down
+st2: We need to change the computers
+st3: Changements have to be handle by the IT
+
+keywords
+```
+st1: [computer , down]
+st2: [need, change, computer]
+st3: [change, handle, IT]
+```
+vocabulary: [computer , down, need, change, handle, IT]
+
+sentence1
+
+| tf | sentence1| sentence2| sentence3| 
+| --- | --- | --- | --- | 
+| computer| 1/2 | 1/2 | 0 |
+| down| 1 | 0 | 0 |
+| need| 0 | 1 | 0 |
+| change| 0 | 1/2 | 1/2 |
+| handle| 0 | 0 | 1 |
+| IT| 0 | 0 | 1 |
+
+N =number_of_sentences =  3
+| idf | | 
+| --- | --- | 
+| computer| log(3/2) 
+| down| log(3/1) 
+| need| log(3/1) 
+| change| log(3/2)
+| handle| log(3/1) 
+| IT| log(3/1) 
+
+#### example for sentence 2
+```
+{r, echo=FALSE}
+$$\\
+tfidf('computer') = tf('computer', sentence2)*idf('computer') = 1/2 * log(3/2)\\
+tfidf('down') = 0 * log(3/1)\\
+tfidf('need') = 1 * log(3/1)\\
+tfidf('change') = 1/2 * log(3/2)\\
+tfidf('handle') = 0 * log(3/1)\\
+tfidf('IT') = 0 * log(3/1)\\
+$$
+```                                                                              
+```                                                                             
+tfidf('computer')  =  tf('computer', sentence2) * idf('computer')  =  1 / 2  * log(3 / 2)                                  
+                                                                              
+                      tfidf('down')  =  0  *  log(3 / 1)                      
+                                                                              
+                      tfidf('need')  =  1  *  log(3 / 1)                      
+                                                                              
+                   tfidf('change')  =  1 / 2  *  log(3 / 2)                   
+                                                                              
+                     tfidf('handle')  =  0  *  log(3 / 1)                     
+                                                                              
+                       tfidf('IT')  =  0  *  log(3 / 1)                       
+                                                                              
+ ```                                                                            
+
+
+#### tfidf values on dataset
+```
+{r, echo=FALSE}
+$$
+sentence1 <==> [\ 0.5*log(3/2),\ log(3/1),\ 0 ,\ 0,\ 0]\\
+sentence2 <==> [\ 0.5*log(3/2),\ 0, 1*log(3/2),\ 0.5* log(3/2) ,\ 0,\ 0]\\
+sentence3 <==> [\ 0, \ 0, \ 0,\ 0.5 * 1*log(3/2),\  log(3/1),\ 1*log(3/1)]
+$$
+```
+```
+          sentence1 <==> [ 0.5 * log(3 / 2), log(3 / 1), 0 , 0, 0]          
+                                                                                
+    sentence2 <==> [ 0.5 * log(3 / 2), 0, 1 * log(3 / 2), 0.5 *  log(3 /2) , 0, 0]                                   
+                                                                                
+sentence3 <==> [ 0,  0,  0, 0.5  *  1 * log(3 / 2),  log(3 / 1), 1 * log(3 /1)]                                       
+```
+
+
+#### similarities the user input
+user input: The IT have replaced all of the computers
+keywords: [ 'IT', 'all',  'computer']
+keywords found in dictionnary: [ 'IT','computer']
+vectorization: [1,0,0,0,1]
+
+#### scores
+```
+{r, echo=FALSE}
+$$
+sentence1: tfidf(sentence1)*vector 
+=  [\ 0.5*log(3/2),\ log(3/1),\ 0 ,\ 0,\ 0] *[1,0,0,0,1]
+=  0.5*log(3/2) \\
+sentence1:0.5*log(3/2)\\
+sentence2:  0.5*log(3/2)\\
+sentence3: log(3/1)
+$$
+```
+```
+sentence1: score = tfidf(sentence1) * vector  
+                 = [ 0.5 * log(3 / 2), log(3 /1), 0 , 0, 0]  * [1,0,0,0,1] 
+                 =   0.5 * log(3 / 2)           
+                                                                     
+                     sentence1:0.5 * log(3 / 2)                      
+                                                                     
+                    sentence2:  0.5 * log(3 / 2)                     
+                                                                     
+                        sentence3: log(3 / 1)                        
+```
+
+
+---
 ##fonction: cosine_similarity_T
 ---
 
