@@ -342,7 +342,7 @@ def wordLemmatizer_(sentence):
 
 # **2: trouver la meilleure phrase dans une liste de phrase**
 ---
-##method: TF-Idf
+## method: TF-Idf
 ---
 TfIdf stands for: Term Frequency Inverse Document Frequency
 In order to compare the user input to existing sentence in database, we will go throught two process
@@ -375,20 +375,18 @@ tfidf(wd,stc)  =  tf(wd,stc)  * idf(wd)
 ```
 
 
-Example
+## Example
 st1: The computer is down
 st2: We need to change the computers
 st3: Changements have to be handle by the IT
 
-keywords
+#### keywords per sentence
 ```
 st1: [computer , down]
 st2: [need, change, computer]
 st3: [change, handle, IT]
 ```
-vocabulary: [computer , down, need, change, handle, IT]
-
-sentence1
+#### vocabulary: [computer , down, need, change, handle, IT]
 
 | tf | sentence1| sentence2| sentence3| 
 | --- | --- | --- | --- | 
@@ -399,6 +397,7 @@ sentence1
 | handle| 0 | 0 | 1 |
 | IT| 0 | 0 | 1 |
 
+#### idf values for the keywords
 N =number_of_sentences =  3
 | idf | | 
 | --- | --- | 
@@ -409,7 +408,7 @@ N =number_of_sentences =  3
 | handle| log(3/1) 
 | IT| log(3/1) 
 
-#### example for sentence 2
+#### example for sentence 2: computing of the keywords tfidf values
 ```
 {r, echo=FALSE}
 $$\\
@@ -436,8 +435,12 @@ tfidf('computer')  =  tf('computer', sentence2) * idf('computer')  =  1 / 2  * l
                                                                               
  ```                                                                            
 
+#### vectorisation of the sentence 2
+```
+sentence2 <==> [ 0.5 * log(3 / 2), 0, 1 * log(3 / 2), 0.5 *  log(3 /2) , 0, 0]                                      
+```
 
-#### tfidf values on dataset
+#### vectorisation of the sentences
 ```
 {r, echo=FALSE}
 $$
@@ -455,7 +458,7 @@ sentence3 <==> [ 0,  0,  0, 0.5  *  1 * log(3 / 2),  log(3 / 1), 1 * log(3 /1)]
 ```
 
 
-#### similarities the user input
+#### similarities between the user input and the sentences
 user input: The IT have replaced all of the computers
 keywords: [ 'IT', 'all',  'computer']
 keywords found in dictionnary: [ 'IT','computer']
@@ -487,7 +490,7 @@ sentence1: score = tfidf(sentence1) * vector
 
 
 ---
-##fonction: cosine_similarity_T
+## fonction: cosine_similarity_T
 ---
 
 
@@ -506,7 +509,7 @@ def init(df_news):
 
 ```
 ---
-##Create a vector for Query/search keywords
+## Create a vector for Query/search keywords
 ---
 
 ```
@@ -527,7 +530,7 @@ def gen_vector_T(tokens,df_news,vocabulary,tfidf,tfidf_tran):
   return Q
 ```
 ---
-##Cosine Similarity function
+## Cosine Similarity function
 ---
 
 ```
@@ -574,7 +577,7 @@ def cosine_similarity_T(k, query,df_news,vocabulary=None,tfidf=None,tfidf_tran=N
 
 
 ---
-##Test: cosine_similarity_T
+## Test: cosine_similarity_T
 ---
 
 ```
@@ -600,7 +603,7 @@ cosine_similarity_T(10,sentence,df_new )
 
 
 ---
-##Output
+## Output
 ---
 
 
